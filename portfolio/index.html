@@ -1,30 +1,137 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-  <title>My Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sahil — Portfolio</title>
+  <meta name="description" content="Portfolio of Sahil — web developer, designer, logic builder." />
+  <!-- Google Font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-  <header>
-    <h1>Sahil's Portfolio</h1>
-    <p>Web Developer | Node.js | MongoDB</p>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">Sahil</a>
+
+      <nav class="nav" id="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" aria-pressed="false" title="Toggle dark mode">🌙</button>
+        <button id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
   </header>
 
-  <section class="about">
-    <h2>About Me</h2>
-    <p>I am learning full stack development and building real projects.</p>
-  </section>
+  <main>
+    <section id="home" class="hero" tabindex="-1">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Hi — I’m <span class="accent" id="person-name">Sahil</span>.</h1>
+          <p class="lead" id="person-role">
+            I build accessible, performant web experiences.
+          </p>
+          <p class="ctas">
+            <a class="btn primary" href="#projects">View projects</a>
+            <a class="btn" href="#contact">Get in touch</a>
+          </p>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <!-- decorative SVG / placeholder -->
+          <svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" role="img">
+            <rect width="300" height="200" rx="16" fill="url(#g)" />
+            <defs>
+              <linearGradient id="g" x1="0" x2="1">
+                <stop offset="0" stop-color="var(--accent)" />
+                <stop offset="1" stop-color="var(--accent-2)" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </section>
 
-  <section class="projects">
-    <h2>Projects</h2>
-    <ul id="projectList"></ul>
-  </section>
+    <section id="about" class="about">
+      <div class="container">
+        <h2>About</h2>
+        <p id="person-about">Hello — I'm a web developer focused on building clean, accessible interfaces and fast
+          experiences. I enjoy
+          collaborating with designers and product teams to turn ideas into polished products.</p>
+        <ul class="skills" aria-label="Skills list">
+          <li>HTML &amp; CSS</li>
+          <li>JavaScript (ES6+)</li>
+          <li>Laravel (php)</li>
+          <li>Postman</li>
+          <li>Accessibility & Performance</li>
+        </ul>
+      </div>
+    </section>
 
-  <footer>
-    <p>© 2026 Sahil</p>
+    <section class="projects" id="projects">
+      <h3>Projects</h3>
+
+      <div class="project-card">
+        <img src="assets/project1.jpg" alt="Project One screenshot">
+        <h4>Project One</h4>
+        <p>Short description of the project.</p>
+      </div>
+
+      <div class="project-card">
+        <img src="assets/project1.jpg" alt="Project One screenshot">
+        <h4>Project One</h4>
+        <p>Short description of the project.</p>
+      </div>
+
+      <div class="project-card">
+        <img src="assets/project1.jpg" alt="Project One screenshot">
+        <h4>Project One</h4>
+        <p>Short description of the project.</p>
+      </div>
+
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>If you’d like to work together, email me at <a href="mailto:sahil512sk@gmail.com" id="person-email">
+            sahil512sk@gmail.com
+          </a> or use the social links below.</p>
+        <p>
+          <a class="btn" href="resume.pdf" download>Download resume</a>
+          <a class="btn" href="mailto:sahil512sk@gmail.com">Email me</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Sahil — Built with ❤️ and JavaScript</p>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Project modal -->
+  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="modal-title">
+    <div class="modal-content" role="document">
+      <button class="modal-close" aria-label="Close project">✕</button>
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+      <div id="modal-links"></div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
+
 </html>

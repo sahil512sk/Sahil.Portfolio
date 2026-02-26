@@ -1,0 +1,166 @@
+/* ====== Global Styles ====== */
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ====== Glass Container ====== */
+.container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 750px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ====== Fieldsets ====== */
+fieldset {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 15px;
+  transition: 0.3s ease;
+}
+
+fieldset:hover {
+  border-color: #ffffff;
+  transform: translateY(-3px);
+}
+
+legend {
+  padding: 0 10px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ====== Labels ====== */
+label {
+  display: block;
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ====== Inputs ====== */
+input,
+textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus,
+textarea:focus {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0 2px #fff;
+}
+
+/* ====== File Input Styling ====== */
+input[type="file"] {
+  background: transparent;
+  padding: 5px;
+}
+
+/* ====== Button ====== */
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ====== Project Fields (Dynamic) ====== */
+.project-card {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.project-card input,
+.project-card textarea {
+  margin-top: 10px;
+}
+
+.project-card button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #f44336;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.project-card button:hover {
+  background: #d32f2f;
+}
+
+/* ====== Animation ====== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 600px) {
+  .container {
+    padding: 25px;
+  }
+}

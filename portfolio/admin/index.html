@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Admin Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Update Portfolio Details</h2>
+
+    <form id="portfolio-form" enctype="multipart/form-data">
+
+      <!-- Personal Info -->
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <label>Full Name</label>
+        <input type="text" name="name" required>
+
+        <label>Role / Title</label>
+        <input type="text" name="role" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>About You</label>
+        <textarea name="about" rows="4" required></textarea>
+
+        <label>Upload CV (PDF)</label>
+        <input type="file" name="cv" accept=".pdf">
+      </fieldset>
+
+      <!-- Skills -->
+      <fieldset>
+        <legend>Skills</legend>
+
+        <label>Skills (comma separated)</label>
+        <input type="text" name="skills" placeholder="HTML, CSS, JavaScript, Laravel">
+      </fieldset>
+
+      <!-- Projects Section -->
+      <fieldset id="projects-fieldset">
+        <legend>Project Details</legend>
+        
+        <div id="projects-container">
+          <!-- Dynamic Project Fields Will Appear Here -->
+        </div>
+
+        <button type="button" id="add-project-btn" class="btn secondary">+ Add Project</button>
+      </fieldset>
+
+      <button type="submit" class="btn primary">Save Portfolio</button>
+
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

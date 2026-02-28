@@ -1,20 +1,30 @@
-// ============================
-// Short selectors
-// ============================
+// async function loadProjects() {
+//   const res = await fetch("/api/projects");
+//   const projects = await res.json();
+
+//   const container = document.getElementById("projects");
+
+//   projects.forEach(project => {
+//     container.innerHTML += `
+//       <div class="project-card">
+//         <h3>${project.title}</h3>
+//         <p>${project.description}</p>
+//         <a href="${project.githubLink}" target="_blank">GitHub</a>
+//         <a href="${project.liveLink}" target="_blank">Live</a>
+//       </div>
+//     `;
+//   });
+// }
+
+// loadProjects();
+
 const $ = (e) => document.querySelector(e);
 const $$ = (e) => document.querySelectorAll(e);
 
-// ============================
-// Auto Year
-// ============================
 $("#year").textContent = new Date().getFullYear();
 
-// ============================
-// Dark Mode Toggle
-// ============================
 const themeBtn = $("#theme-toggle");
 
-// Load saved theme
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
   themeBtn.textContent = "☀️";
@@ -29,9 +39,6 @@ themeBtn.addEventListener("click", () => {
   localStorage.setItem("theme", isDark ? "dark" : "light");
 });
 
-// ============================
-// Mobile Menu
-// ============================
 const menuBtn = $("#menu-toggle");
 const nav = $("#main-nav");
 
@@ -42,7 +49,6 @@ menuBtn.addEventListener("click", () => {
   menuBtn.setAttribute("aria-expanded", expanded);
 });
 
-// Close menu when link clicked
 $$(".nav a").forEach(link => {
   link.addEventListener("click", () => {
     nav.classList.remove("open");
@@ -50,9 +56,6 @@ $$(".nav a").forEach(link => {
   });
 });
 
-// ============================
-// Smooth Scroll
-// ============================
 $$('a[href^="#"]').forEach(link => {
   link.addEventListener("click", function (e) {
     e.preventDefault();
@@ -63,9 +66,6 @@ $$('a[href^="#"]').forEach(link => {
   });
 });
 
-// ============================
-// Simple Project Modal
-// ============================
 const modal = $("#project-modal");
 const modalTitle = $("#modal-title");
 const modalDesc = $("#modal-desc");

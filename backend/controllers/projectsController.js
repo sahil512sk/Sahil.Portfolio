@@ -11,33 +11,37 @@ const getProject = async (req, res) => {
 
 const postProject = async (req, res) => {
     try {
-        console.log("Received request body:", req.body);  // More detailed logging
+        console.log("Received request body:", req.body);
 
-        // Ensure req.body is an object and contains the expected properties
         if (!req.body || typeof req.body !== 'object') {
             return res.status(400).json({ error: 'Invalid request body' });
         }
 
-        // Ensure required fields exist in the request body
-        const { title, description, gitLink, liveLink } = req.body;
-        if (!title || !description || !gitLink || !liveLink) {
-            return res.status(400).json({ error: 'All fields (title, description, gitLink, liveLink) are required' });
+        // Handle multiple projects
+        let projectsToSave = [];
+        
+        if (req.body.projects && Array.isArray(req.body.projects)) {
+            // Multiple projects
+            projectsToSave = req.body.projects.filter(project => 
+                project.title && project.description && project.gitlink && project.livelink
+            );
+        } else if (req.body.title && req.body.description && req.body.gitlink && req.body.livelink) {
+            // Single project
+            projectsToSave = [req.body];
         }
 
-        // Create new project instance
-        const newProject = new Project({ title, description, gitLink, liveLink });
+        if (projectsToSave.length === 0) {
+            return res.status(400).json({ error: 'No valid projects to save. All fields (title, description, gitlink, livelink) are required for each project.' });
+        }
 
-        // Save the new project to the database
-        await newProject.save();
+        // Save all projects
+        const savedProjects = await Project.insertMany(projectsToSave);
 
-        // Respond with the newly created project
-        res.json(newProject);
+        res.json({ message: `${savedProjects.length} projects saved successfully`, projects: savedProjects });
     } catch (err) {
-        console.error(err); // For debugging
+        console.error(err);
         res.status(500).json({ error: err.message });
     }
 };
-
-module.exports = { postProject, getProject };
 
 module.exports = { postProject, getProject };

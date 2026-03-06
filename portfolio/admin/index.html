@@ -65,6 +65,15 @@
         <button type="button" id="add-project-btn" class="btn secondary">+ Add Project</button>
       </fieldset>
 
+      <fieldset id="work-fieldset">
+        <legend>Work Experience</legend>
+
+        <div id="work-container">
+        </div>
+
+        <button type="button" id="add-work-btn" class="btn secondary">+ Add Work Experience</button>
+      </fieldset>
+
       <button type="submit" class="btn primary">Save Portfolio</button>
 
     </form>
@@ -120,6 +129,73 @@
 
       const projectContainer = document.getElementById('projects-container');
       projectContainer.appendChild(newDiv);
+    });
+
+    document.getElementById('add-work-btn').addEventListener('click', function () {
+      const newDiv = document.createElement('div');
+      newDiv.classList.add('work');
+
+      const companyLabel = document.createElement('label');
+      companyLabel.textContent = 'Company:';
+      const companyInput = document.createElement('input');
+      companyInput.type = 'text';
+      companyInput.placeholder = 'Enter company name';
+      companyInput.name = 'company';
+
+      const positionLabel = document.createElement('label');
+      positionLabel.textContent = 'Position:';
+      const positionInput = document.createElement('input');
+      positionInput.type = 'text';
+      positionInput.placeholder = 'Enter your position/title';
+      positionInput.name = 'position';
+
+      const startDateLabel = document.createElement('label');
+      startDateLabel.textContent = 'Start Date:';
+      const startDateInput = document.createElement('input');
+      startDateInput.type = 'month';
+      startDateInput.name = 'start_date';
+
+      const endDateLabel = document.createElement('label');
+      endDateLabel.textContent = 'End Date:';
+      const endDateInput = document.createElement('input');
+      endDateInput.type = 'month';
+      endDateInput.name = 'end_date';
+
+      const currentLabel = document.createElement('label');
+      currentLabel.textContent = 'Currently Working:';
+      const currentInput = document.createElement('input');
+      currentInput.type = 'checkbox';
+      currentInput.name = 'current';
+
+      const descriptionLabel = document.createElement('label');
+      descriptionLabel.textContent = 'Description:';
+      const descriptionInput = document.createElement('textarea');
+      descriptionInput.placeholder = 'Enter job description and responsibilities';
+      descriptionInput.name = 'work_description';
+
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = 'Remove Work Experience';
+      removeBtn.classList.add('remove-btn');
+      removeBtn.addEventListener('click', function () {
+        newDiv.remove();
+      });
+
+      newDiv.appendChild(companyLabel);
+      newDiv.appendChild(companyInput);
+      newDiv.appendChild(positionLabel);
+      newDiv.appendChild(positionInput);
+      newDiv.appendChild(startDateLabel);
+      newDiv.appendChild(startDateInput);
+      newDiv.appendChild(endDateLabel);
+      newDiv.appendChild(endDateInput);
+      newDiv.appendChild(currentLabel);
+      newDiv.appendChild(currentInput);
+      newDiv.appendChild(descriptionLabel);
+      newDiv.appendChild(descriptionInput);
+      newDiv.appendChild(removeBtn);
+
+      const workContainer = document.getElementById('work-container');
+      workContainer.appendChild(newDiv);
     });</script>
 </body>
 

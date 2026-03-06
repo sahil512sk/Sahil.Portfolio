@@ -64,6 +64,32 @@ async function loadData() {
         projectsContainer.appendChild(projectCard);
       });
     }
+
+    const workRes = await fetch('http://localhost:3000/work/getWork');
+    const workExperiences = await workRes.json();
+
+    const workContainer = document.querySelector('.work-container');
+    if (workExperiences && workExperiences.length > 0) {
+      const existingCards = workContainer.querySelectorAll('.work-card');
+      existingCards.forEach(card => card.remove());
+
+      workExperiences.forEach(work => {
+        const workCard = document.createElement('div');
+        workCard.className = 'work-card';
+
+        const endDate = work.current ? 'Present' : work.end_date || 'Present';
+        const dateRange = `${work.start_date} - ${endDate}`;
+
+        workCard.innerHTML = `
+          <h4>${work.position}</h4>
+          <h5>${work.company}</h5>
+          <span>${dateRange}</span>
+          <p>${work.work_description}</p>
+        `;
+
+        workContainer.appendChild(workCard);
+      });
+    }
   } catch (error) {
     console.error('Error loading data:', error);
   }

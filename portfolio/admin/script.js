@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const formData = new FormData(form);
     const userData = {};
     const projectData = {};
+    const workData = {};
 
     formData.forEach((value, key) => {
       if (key !== 'cv' && key !== 'avatar') {
@@ -30,23 +31,48 @@ document.addEventListener('DOMContentLoaded', function () {
               projectData.projects[index][key] = input.value.trim();
             }
           });
+        } else if (['company', 'position', 'start_date', 'end_date', 'work_description'].includes(key)) {
+          if (!workData.work) {
+            workData.work = [];
+          }
+
+          const workInputs = form.querySelectorAll(`input[name="${key}"], textarea[name="${key}"]`);
+          workInputs.forEach((input, index) => {
+            if (input.value && input.value.trim()) {
+              if (!workData.work[index]) {
+                workData.work[index] = {};
+              }
+              workData.work[index][key] = input.value.trim();
+            }
+          });
+        } else if (key === 'current') {
+          if (!workData.work) {
+            workData.work = [];
+          }
+
+          const currentInputs = form.querySelectorAll(`input[name="${key}"]`);
+          currentInputs.forEach((input, index) => {
+            if (!workData.work[index]) {
+              workData.work[index] = {};
+            }
+            workData.work[index][key] = input.checked;
+          });
         }
       }
     });
 
-    console.log('User data object:', userData);
-    console.log('Project data object:', projectData);
-
     const hasFile = (formData.has('cv') && formData.get('cv') instanceof File) ||
       (formData.has('avatar') && formData.get('avatar') instanceof File);
-
-    console.log('Has file:', hasFile);
+    // console.log('Has file:', hasFile);
 
     const hasProjects = formData.has('title') || formData.has('description') || formData.has('gitlink') || formData.has('livelink');
-    console.log('Has projects:', hasProjects);
+    // console.log('Has projects:', hasProjects);
+
+    const hasWorkExperience = formData.has('company') || formData.has('position') || formData.has('start_date');
+    // console.log('Has work experience:', hasWorkExperience);
 
     const hasUserData = formData.has('name') || formData.has('email') || formData.has('role');
-    console.log('Has user data:', hasUserData);
+    // console.log('Has user data:', hasUserData);
 
     let responses = [];
 
@@ -87,6 +113,20 @@ document.addEventListener('DOMContentLoaded', function () {
         responses.push(projectResponse);
       } catch (err) {
         alert('Failed to submit project data.');
+        return;
+      }
+    }
+
+    if (hasWorkExperience) {
+      try {
+        const workResponse = await fetch('http://localhost:3000/work/postWork', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(workData)
+        });
+        responses.push(workResponse);
+      } catch (err) {
+        alert('Failed to submit work experience data.');
         return;
       }
     }

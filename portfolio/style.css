@@ -136,17 +136,29 @@ body {
 
 .education h2 {
   margin-bottom: 30px;
-  font-size: 30px;
   text-align: center;
+  font-size: 30px;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
 }
 
 .education-card {
   background: var(--card);
   border-radius: 12px;
   padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
   border: 1px solid var(--border);
+  text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
 }
 
 .education-card h3 {
@@ -156,6 +168,61 @@ body {
 .education-card span {
   font-size: 14px;
   opacity: 0.7;
+}
+
+.experience {
+  padding: 80px 0;
+}
+
+.experience h2 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.work-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.work-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.work-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.work-card h4 {
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.work-card h5 {
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.work-card span {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.work-card p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .skills-section {
@@ -334,6 +401,8 @@ body {
   }
 
   .skills-grid,
+  .education-grid,
+  .work-container,
   .services-grid,
   .projects-container {
     grid-template-columns: 1fr;

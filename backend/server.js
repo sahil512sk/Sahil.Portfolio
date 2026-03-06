@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const path = require("path");
 const projectRoutes = require('./routes/projectsRoutes');
 const UserRoutes = require('./routes/usersRoutes');
+const workRoutes = require('./routes/workRoutes');
 const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(express.static("portfolio"));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/projects', projectRoutes);
 app.use('/users', UserRoutes);
+app.use('/work', workRoutes);
 
 async function startServer() {
   const db = await connectDB();

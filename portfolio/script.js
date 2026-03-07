@@ -59,7 +59,7 @@ async function loadData() {
           <div class="project-content">
             <h4>${project.title}</h4>
             <p>${project.description}</p>
-            <div class="project-links">
+            <div class="project-links" style="margin-bottom: 15px;">
               <a href="${project.gitlink}" target="_blank" class="btn">GitHub</a>
               <a href="${project.livelink}" target="_blank" class="btn">Live Demo</a>
             </div>

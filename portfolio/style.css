@@ -400,20 +400,21 @@ body {
   transition: opacity 0.3s ease;
 }
 
-.project-card:hover .project-content {
-  opacity: 1;
+.project-card:hover .project-content:hover  {
+  opacity: 0.97;
 }
 
 .project-card h4 {
   color: var(--accent);
   margin-bottom: 10px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .project-card p {
-  color: #b0b0b0;
+  color: #ffffff;
   margin-bottom: 20px;
   flex-grow: 1;
+  font-size: 1.4rem;
 }
 
 .project-links {
@@ -421,10 +422,11 @@ body {
   gap: 10px;
   justify-content: center;
   margin-top: 15px;
+  font-size: 1.5rem;
 }
 
 .contact {
-  padding: 80px 0;
+  padding: 60px 0;
   text-align: center;
 }
 
@@ -433,47 +435,36 @@ body {
 }
 
 .contact p {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .contact .btn {
-  margin: 10px 5px;
+  margin: 10px 15px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  border: rgb(96, 126, 154) 1px solid;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .contact-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 25px;
   margin-bottom: 20px;
 }
 
-.social-links {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
 .contact a {
-  color: var(--accent);
   text-decoration: none;
-}
-
-.social-links a {
-  color: var(--accent);
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.social-links a:hover {
-  color: var(--accent-2);
 }
 
 .site-footer {
   border-top: 1px solid var(--border);
   text-align: center;
   padding: 25px 0;
-  margin-top: 40px;
 }
 
 .modal {

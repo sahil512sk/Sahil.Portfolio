@@ -9,16 +9,33 @@ async function loadData() {
       document.getElementById('person-role').textContent = user.role || 'Web Developer';
       document.getElementById('person-about').textContent = user.about || 'Hello — I\'m a web developer focused on building clean, accessible interfaces and fast experiences.';
       document.getElementById('person-email').textContent = user.email || 'sahil512sk@gmail.com';
+      document.getElementById('person-email').href = `mailto:${user.email || 'sahil512sk@gmail.com'}`;
 
-      const skillsList = document.querySelector('.skills');
-      if (user.skills && user.skills.length > 0) {
-        skillsList.innerHTML = user.skills.map(skill => `<li>${skill}</li>`).join('');
+      const githubLink = document.querySelector('#github');
+      if (githubLink && user.github) {
+        githubLink.href = user.github;
+      }
+      const whatsappLink = document.querySelector('#whatsapp');
+      if (whatsappLink && user.whatsapp) {
+        whatsappLink.href = user.whatsapp;
       }
 
       if (user.cv) {
-        const cvLink = document.querySelector('a[href*="cv.pdf"]');
+        const cvLink = document.getElementById('cv-link');
         if (cvLink) {
           cvLink.href = `http://localhost:3000/uploads/${user.cv}`;
+        }
+      }
+
+      if (user.avatar) {
+        const avatarImg = document.getElementById('person-avatar');
+        if (avatarImg) {
+          avatarImg.src = `http://localhost:3000/uploads/${user.avatar}`;
+          avatarImg.style.display = 'block';
+          const svg = avatarImg.nextElementSibling;
+          if (svg && svg.tagName === 'svg') {
+            svg.style.display = 'none';
+          }
         }
       }
     }
@@ -101,39 +118,6 @@ const $ = (e) => document.querySelector(e);
 const $$ = (e) => document.querySelectorAll(e);
 
 $("#year").textContent = new Date().getFullYear();
-
-const themeBtn = $("#theme-toggle");
-
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark");
-  themeBtn.textContent = "☀️";
-}
-
-themeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-
-  const isDark = document.body.classList.contains("dark");
-  themeBtn.textContent = isDark ? "☀️" : "🌙";
-
-  localStorage.setItem("theme", isDark ? "dark" : "light");
-});
-
-const menuBtn = $("#menu-toggle");
-const nav = $("#main-nav");
-
-menuBtn.addEventListener("click", () => {
-  nav.classList.toggle("open");
-
-  const expanded = nav.classList.contains("open");
-  menuBtn.setAttribute("aria-expanded", expanded);
-});
-
-$$(".nav a").forEach(link => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    menuBtn.setAttribute("aria-expanded", false);
-  });
-});
 
 $$('a[href^="#"]').forEach(link => {
   link.addEventListener("click", function (e) {

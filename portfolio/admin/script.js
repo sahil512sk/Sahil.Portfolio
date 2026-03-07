@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (key !== 'cv' && key !== 'avatar') {
         if (key === 'skills') {
           userData[key] = value.split(',').map(s => s.trim()).filter(Boolean);
-        } else if (['name', 'email', 'role', 'about'].includes(key)) {
+        } else if (['name', 'email', 'role', 'about', 'github', 'whatsapp'].includes(key)) {
           userData[key] = value;
         } else if (['title', 'description', 'gitlink', 'livelink'].includes(key)) {
           // Handle multiple projects - collect all project fields

@@ -27,10 +27,6 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-
-      <div class="header-actions">
-        <button id="theme-toggle" aria-pressed="false" title="Toggle dark mode">🌙</button>
-      </div>
     </div>
   </header>
 
@@ -49,15 +45,7 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <svg width="300" height="200" viewBox="0 0 300 200">
-            <rect width="300" height="200" rx="16" fill="url(#g)" />
-            <defs>
-              <linearGradient id="g" x1="0" x2="1">
-                <stop offset="0" stop-color="var(--accent)" />
-                <stop offset="1" stop-color="var(--accent-2)" />
-              </linearGradient>
-            </defs>
-          </svg>
+          <img id="person-avatar" src="" alt="Profile">
         </div>
       </div>
     </section>
@@ -175,21 +163,21 @@
         </p>
 
         <p>
-          <a class="btn" href="#" download="cv.pdf">Download resume</a>
+          <a id="cv-link" class="btn" href="#" download="cv.pdf">Download resume</a>
           <a class="btn" href="mailto:">Email me</a>
         </p>
       </div>
 
       <div class="social-links">
-        <a href="#" target="_blank">GitHub</a>
-        <a href="#" target="_blank">LinkedIn</a>
+        <a id="github" class="btn" href="#" target="_blank">GitHub</a>
+        <a id="whatsapp" class="btn" href="#" target="_blank">WhatsApp</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>© <span id="year"></span> Sahil — Built with ❤️ and JavaScript</p>
+      <small>© <span id="year"></span> Sahil — Code. Create. Innovate.</small>
     </div>
   </footer>
 

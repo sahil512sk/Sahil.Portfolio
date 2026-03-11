@@ -157,14 +157,23 @@
         <h2>Contact</h2>
         <p>
           If you’d like to work together, email me at
-          <a href="mailto:" id="person-email" style="color: #53e5ff;">
+          <a href="mailto:sahil512sk@gmail.com" style="color: #53e5ff;">
           </a>
           or use the social links below.
         </p>
-
+        <form name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <input type="text" name="subject" placeholder="Subject (Optional)">
+          <textarea name="message" placeholder="Suggest a project and write your message..." rows="5"
+            required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
         <p>
           <a id="cv-link" class="btn" href="#" download="cv.pdf">Download resume</a>
-          <a class="btn" href="mailto:">Email me</a>
+          <a id="person-email" class="btn" href="mailto:">Email me</a>
         </p>
       </div>
 

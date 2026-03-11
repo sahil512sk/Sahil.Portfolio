@@ -8,7 +8,6 @@ async function loadData() {
       document.getElementById('person-name').textContent = user.name || 'Sahil';
       document.getElementById('person-role').textContent = user.role || 'Web Developer';
       document.getElementById('person-about').textContent = user.about || 'Hello — I\'m a web developer focused on building clean, accessible interfaces and fast experiences.';
-      document.getElementById('person-email').textContent = user.email || 'sahil512sk@gmail.com';
       document.getElementById('person-email').href = `mailto:${user.email || 'sahil512sk@gmail.com'}`;
 
       const githubLink = document.querySelector('#github');
@@ -128,8 +127,10 @@ $("#year").textContent = new Date().getFullYear();
 
 $$('a[href^="#"]').forEach(link => {
   link.addEventListener("click", function (e) {
+    const href = this.getAttribute("href");
+    if (!href.startsWith("#")) return;
     e.preventDefault();
-    const target = $(this.getAttribute("href"));
+    const target = document.querySelector(href);
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
     }

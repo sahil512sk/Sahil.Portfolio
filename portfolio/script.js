@@ -101,7 +101,7 @@ async function loadData() {
         workCard.className = 'work-card';
 
         const endDate = work.current ? 'Present' : work.end_date || 'Present';
-        const dateRange = `${work.start_date} - ${endDate}`;
+        const dateRange = `${work.start_date} : ${endDate}`;
 
         workCard.innerHTML = `
           <h4>${work.position}</h4>
@@ -118,7 +118,34 @@ async function loadData() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', loadData);
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();
+
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('main-nav');
+
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+      }
+    });
+  }
+});
 
 const $ = (e) => document.querySelector(e);
 const $$ = (e) => document.querySelectorAll(e);
@@ -168,4 +195,22 @@ modal.addEventListener("click", (e) => {
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
+});
+
+const navLinks = document.querySelectorAll('#main-nav a');
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    const href = e.target.getAttribute('href');
+
+    if (href) {
+      const targetId = href.substring(1);
+      const targetContainer = document.querySelector(`#${targetId} .container`);
+      document.querySelectorAll('section .container').forEach(container => {
+        container.style.marginTop = '0';
+      });
+      if (targetContainer) {
+        targetContainer.style.marginTop = '2%';
+      }
+    }
+  });
 });

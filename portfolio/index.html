@@ -15,6 +15,11 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#home">Sahil</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav class="nav" id="main-nav" aria-label="Primary">
         <ul>
           <li><a href="#home">Home</a></li>
@@ -30,10 +35,10 @@
     </div>
   </header>
 
-  <main>
-    <section id="home" class="hero" tabindex="-1">
+  <main id="main-section">
+    <section id="home" class="hero" tabindex="-1" style="margin-bottom: -4%;">
       <div class="container hero-inner">
-        <div class="hero-text">
+        <div class="hero-text" style="margin-top: 1%;">
           <h1>Hi — My Name is <span class="accent" id="person-name">Random</span>.</h1>
 
           <h2>I am a <b><span class="lead" id="person-role"></span></b></h2>
@@ -50,8 +55,8 @@
       </div>
     </section>
 
-    <section id="about" class="about">
-      <div class="container">
+    <section id="about" class="about" style="margin-bottom: -4%;">
+      <div class="container" style="margin-top: 2%;">
         <h2>About Me</h2>
         <h3 id="person-about">
           Hi, I am a passionate web developer with a strong interest in creating responsive and
@@ -63,8 +68,8 @@
       </div>
     </section>
 
-    <section id="education" class="educations">
-      <div class="container">
+    <section id="education" class="education" style="margin-bottom: -4%;">
+      <div class="container" style="margin-top: 5%;">
         <h2 style="text-align: center;">Education</h2>
         <div class="education-grid">
           <div class="education-card">
@@ -86,16 +91,16 @@
       </div>
     </section>
 
-    <section id="experience" class="experience">
-      <div class="container">
+    <section id="experience" class="experience" style="margin-bottom: -4%;">
+      <div class="container" style="margin-top: 2%;">
         <h2>Work Experience</h2>
         <div class="work-container">
         </div>
       </div>
     </section>
 
-    <section id="skills" class="skills-section">
-      <div class="container">
+    <section id="skills" class="skills-section" style="margin-bottom: -4%;">
+      <div class="container" style="margin-top: 2%;">
         <h2>My Skills</h2>
         <div class="skills-grid">
           <div class="skill-card">
@@ -122,8 +127,8 @@
       </div>
     </section>
 
-    <section id="services" class="services">
-      <div class="container">
+    <section id="services" class="services" style="margin-bottom: -4%;">
+      <div class="container" style="margin-top: 2%;">
         <h2>Services</h2>
         <div class="services-grid">
           <div class="service-card">
@@ -144,22 +149,19 @@
       </div>
     </section>
 
-    <section class="projects" id="projects">
-      <div class="container">
+    <section class="projects" id="projects" style="margin-bottom: -4%;">
+      <div class="container" style="margin-top: 2%;">
         <h3>Projects</h3>
         <div class="projects-container">
         </div>
       </div>
     </section>
 
-    <section id="contact" class="contact">
-      <div class="container">
+    <section id="contact" class="contact" style="margin-bottom: -2%;">
+      <div class="container" style="margin-top: 2%;">
         <h2>Contact</h2>
         <p>
-          If you’d like to work together, email me at
-          <a href="mailto:sahil512sk@gmail.com" style="color: #53e5ff;">
-          </a>
-          or use the social links below.
+          If you’d like to work together, email me or use the social links below.
         </p>
         <form name="contact" method="POST" data-netlify="true">
           <input type="hidden" name="form-name" value="contact">
@@ -167,12 +169,12 @@
           <input type="email" name="email" placeholder="Your Email" required>
           <input type="tel" name="phone" placeholder="Phone Number" required>
           <input type="text" name="subject" placeholder="Subject (Optional)">
-          <textarea name="message" placeholder="Suggest a project and write your message..." rows="5"
+          <textarea name="message" placeholder="Have a project in mind? Send me a message..." rows="5"
             required></textarea>
           <button type="submit">Send Message</button>
         </form>
         <p>
-          <a id="cv-link" class="btn" href="#" download="cv.pdf">Download resume</a>
+          <a id="cv-link" class="btn" href="#" download="cv.pdf" target="_blank">Download resume</a>
           <a id="person-email" class="btn" href="mailto:">Email me</a>
         </p>
       </div>

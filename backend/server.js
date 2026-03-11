@@ -12,7 +12,7 @@ const UserRoutes = require("./routes/usersRoutes");
 const workRoutes = require("./routes/workRoutes");
 
 const app = express();
-// MONGO_URI=mongodb+srv://sahil512sk_coc:$Rdx_tbijm_049@cluster0.9xdwln3.mongodb.net/
+// MONGO_URI=mongodb+srv://sahil512sk_coc:Rdx_tbijm_049@cluster0.9xdwln3.mongodb.net/
 // PORT=3000
 app.use(cors());
 app.use(bodyParser.json());

@@ -621,7 +621,6 @@ form[name="contact"] button:disabled, #contactForm button:disabled {
 
   .header-inner {
     flex-direction: column;
-    gap: 15px;
     padding: 15px 0;
   }
 

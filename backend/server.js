@@ -2,7 +2,6 @@ require('dotenv').config({ quiet: true });
 
 const express = require("express");
 const connectDB = require("./connectDB");
-const multer = require("multer");
 const cors = require('cors');   // To allow requests from frontend
 const bodyParser = require('body-parser');
 const path = require("path");

@@ -12,7 +12,6 @@ if (!process.env.PORT) {
 // MONGO_URI=mongodb+srv://sahil512sk_coc:Rdx_tbijm_049@cluster0.9xdwln3.mongodb.net/
 // PORT=3000
 
-
 const express = require("express");
 const connectDB = require("./connectDB");
 const cors = require('cors');

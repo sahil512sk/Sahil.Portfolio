@@ -468,7 +468,7 @@ body {
   margin-bottom: 25px;
 }
 
-form[name="contact"] {
+form[name="contact"], #contactForm {
   max-width: 600px;
   margin: 0 auto 30px;
   display: flex;
@@ -476,8 +476,7 @@ form[name="contact"] {
   gap: 15px;
 }
 
-form[name="contact"] input,
-form[name="contact"] textarea {
+form[name="contact"] input, form[name="contact"] textarea, #contactForm input, #contactForm textarea {
   width: 100%;
   padding: 15px;
   background: var(--card);
@@ -486,28 +485,41 @@ form[name="contact"] textarea {
   color: var(--text);
   font-family: "Inter", sans-serif;
   font-size: 16px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-form[name="contact"] input::placeholder,
-form[name="contact"] textarea::placeholder {
-  color: var(--accent-2);
-  opacity: 0.7;
-}
-
-form[name="contact"] input:focus,
-form[name="contact"] textarea:focus {
+form[name="contact"] input:focus, form[name="contact"] textarea:focus, #contactForm input:focus, #contactForm textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(83, 229, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(83, 229, 255, 0.15);
+  transform: translateY(-1px);
 }
 
-form[name="contact"] textarea {
+form[name="contact"] input:invalid:not(:focus):not(:placeholder-shown), form[name="contact"] textarea:invalid:not(:focus):not(:placeholder-shown), #contactForm input:invalid:not(:focus):not(:placeholder-shown), #contactForm textarea:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+}
+
+form[name="contact"] input:valid:not(:placeholder-shown), form[name="contact"] textarea:valid:not(:placeholder-shown), #contactForm input:valid:not(:placeholder-shown), #contactForm textarea:valid:not(:placeholder-shown) {
+  border-color: #10b981;
+}
+
+form[name="contact"] input::placeholder, form[name="contact"] textarea::placeholder, #contactForm input::placeholder, #contactForm textarea::placeholder {
+  color: var(--accent-2);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+form[name="contact"] input:focus::placeholder, form[name="contact"] textarea:focus::placeholder, #contactForm input:focus::placeholder, #contactForm textarea:focus::placeholder {
+  opacity: 0.4;
+}
+
+form[name="contact"] textarea, #contactForm textarea {
   resize: vertical;
   min-height: 120px;
 }
 
-form[name="contact"] button {
+form[name="contact"] button, #contactForm button {
   padding: 15px 30px;
   background: var(--accent);
   color: var(--bg);
@@ -521,10 +533,22 @@ form[name="contact"] button {
   letter-spacing: 1px;
 }
 
-form[name="contact"] button:hover {
+form[name="contact"] button:hover, #contactForm button:hover {
   background: var(--accent-2);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(83, 229, 255, 0.3);
+}
+
+form[name="contact"] button:active, #contactForm button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(83, 229, 255, 0.3);
+}
+
+form[name="contact"] button:disabled, #contactForm button:disabled {
+  background: #6b7280;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .contact-buttons {

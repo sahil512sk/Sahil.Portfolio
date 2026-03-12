@@ -197,20 +197,42 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
 });
 
-const navLinks = document.querySelectorAll('#main-nav a');
-navLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    const href = e.target.getAttribute('href');
+const form = document.getElementById("contactForm");
+if (form) {
+  const submitButton = form.querySelector("button[type='submit']");
+  const originalButtonText = submitButton.textContent;
+  
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    
+    const formData = new FormData(form);
+    const endpoint = "https://formspree.io/f/mreyqwpa";
 
-    if (href) {
-      const targetId = href.substring(1);
-      const targetContainer = document.querySelector(`#${targetId} .container`);
-      document.querySelectorAll('section .container').forEach(container => {
-        container.style.marginTop = '0';
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: formData
       });
-      if (targetContainer) {
-        targetContainer.style.marginTop = '2%';
+
+      if (response.ok) {
+        alert("Thank you! Your message was sent successfully.");
+        form.reset();
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        const errorMessage = errorData.error || "There was a problem sending your message. Please try again.";
+        alert(`Oops! ${errorMessage}`);
       }
+    } catch (error) {
+      alert("Oops! There was a network error. Please check your connection and try again.");
+      console.error("Form submission error:", error);
+    } finally {
+      // Reset button state
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
     }
   });
-});
+}
